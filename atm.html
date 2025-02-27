@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="atm.css">
+</head>
+<body>
+    <div class="parent">
+        <input type="text" id="amountInp" placeholder="Enter amount">
+        <div class="display" id="displaybalance"></div>
+        <div><button onclick="withdrawl()">Withdrawl</button></div>
+        <div><button onclick="deposit()">Deposit</button></div>
+        <div><button onclick="checkbalance()">Check balance</button></div>
+
+
+    </div>
+
+    <script>
+        let balance=0;
+        const displaybalance=document.getElementById("displaybalance")
+        const parent=document.getElementsByClassName("parent")
+        const amountInp=document.getElementById("amountInp")
+        function withdrawl(amount){
+            amount=+(amountInp.value)
+            if(isNaN(amount) || amount<0 || amount==""){
+                alert("Enter valid amount")
+                return;
+            }
+            if(amount>balance){
+                alert("Insufficient balance!!")
+
+            }
+            else{
+                balance-=amount
+                displaybalancee()
+
+            }
+            amountInp.value=""
+
+
+        }
+        function deposit(){
+            amount=+(amountInp.value);
+            if(isNaN(amount) || amount<0 || amount==""){
+                alert("Enter valid amount")
+                return;
+            }
+            balance+=amount
+            displaybalancee()
+            amountInp.value=""
+        }
+        function checkbalance(){
+            alert(`Your current balance is ${balance}`)
+        }
+        function displaybalancee(){
+        displaybalance.textContent="Balance:Rs."+balance}
+
+
+    </script>
+</body>
+</html>
